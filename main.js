@@ -39,6 +39,7 @@ function isNan (num) {
 window.onload = function () {
     document.body.appendChild(createList([
         '2016-01-11T11:05:41+0100',
+        '2016-11-11T11:05:41+0100',
         '2016-1-11T11:05:41+0100',
         '2016-01-11T1:05:41+0100',
         '2016-01-11T1:5:41+0100',

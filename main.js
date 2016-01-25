@@ -38,7 +38,7 @@ function isNan (num) {
 var createDateFromString = function (dateString) {
     var returnDate = new Date(dateString);
     if (!(returnDate instanceof Date) || isNaN(returnDate.valueOf())) {
-        var pattern = /([0-9-]+) ([0-9:]+) (\+[0-9][0-9])([0-9][0-9])/i; //2014-06-18 17:35:28 +0200
+        var pattern = /([0-9-]+) ([0-9:]+)[ T]?(\+[0-9][0-9]):?([0-9][0-9])/i; //2014-06-18 17:35:28 +0200
         returnDate = new Date(dateString.replace(pattern, '$1T$2$3:$4'));//2014-06-18T17:35:28+02:00
     }
     return returnDate;

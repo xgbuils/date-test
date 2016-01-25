@@ -38,7 +38,7 @@ function isNan (num) {
 var createDateFromString = function (dateString) {
     var returnDate = new Date(dateString);
     if (!(returnDate instanceof Date) || isNaN(returnDate.valueOf())) {
-        var pattern = /([0-9-]+) ([0-9:]+)[ T]?(\+[0-9][0-9]):?([0-9][0-9])/i; //2014-06-18 17:35:28 +0200
+        var pattern = /([0-9-]+)[ T]([0-9:]+)\s*(\+[0-9][0-9]):?([0-9][0-9])/i; //2014-06-18 17:35:28 +0200
         returnDate = new Date(dateString.replace(pattern, '$1T$2$3:$4'));//2014-06-18T17:35:28+02:00
     }
     return returnDate;
@@ -47,11 +47,9 @@ var createDateFromString = function (dateString) {
 window.onload = function () {
     document.body.appendChild(createList([
         '2016-01-11T11:05:41+0100',
-        '2016-11-11T11:05:41+0100',
-        '2016-1-11T11:05:41+0100',
-        '2016-01-11T1:05:41+0100',
-        '2016-01-11T1:5:41+0100',
-        '2016-01-11T1:5:1+0100'
+        '2016-01-11 11:05:41+0100',
+        '2016-01-11T11:05:41+01:00',
+        '2016-01-11 11:05:41+01:00',
     ]))
 }
 

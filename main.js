@@ -40,13 +40,15 @@ function isNan (num) {
 }
 
 var createDateFromString = function (dateString) {
-    var returnDate = new Date(dateString);
-    if (!(returnDate instanceof Date) || isNaN(returnDate.valueOf())) {
-        var pattern = /([0-9-]+)[ T]([0-9:]+)\s*(\+[0-9][0-9]):?([0-9][0-9])/i; //2014-06-18 17:35:28 +0200
-        returnDate = new Date(dateString.replace(pattern, '$1T$2$3:$4'));//2014-06-18T17:35:28+02:00
-    }
-    return returnDate;
-};
+        var returnDate = new Date(dateString);
+        if (!(returnDate instanceof Date) || isNaN(returnDate.valueOf())) {
+            // '2014-06-18 17:35:28 +0200' or '2014-06-18T17:35:28+0200' or '2014-06-18 17:35:28+02:00'
+            var pattern = /([0-9-]+)[ T]([0-9:]+)\s*(\+[0-9][0-9]):?([0-9][0-9])/i;
+            // is transformed to '2014-06-18T17:35:28+02:00'
+            returnDate = new Date(dateString.replace(pattern, '$1T$2$3:$4'));
+        }
+        return returnDate;
+    };
 
 window.onload = function () {
     document.body.appendChild(createList([

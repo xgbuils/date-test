@@ -9,18 +9,22 @@ function createList (list) {
 }
 
 function createDateElement (dateString) {
-    var date = createDateFromString(dateString)
-    var hours = date.getHours()
+    var dateBefore = new Date(dateString)
+    var dateAfter = createDateFromString(dateString)
+    var hoursBefore = dateBefore.getHours()
+    var hoursAfter = dateAfter.getHours()
     var dl = document.createElement('dl')
-    if (isNan(hours)) {
+    if (isNan(hoursAfter)) {
         dl.setAttribute('class', 'isnan')
     }
     dl.appendChild(createElement('dt', 'String'))
     dl.appendChild(createElement('dd', dateString))
     dl.appendChild(createElement('dt', 'Date'))
-    dl.appendChild(createElement('dd', date))
-    dl.appendChild(createElement('dt', 'Hours'))
-    dl.appendChild(createElement('dd', hours))
+    dl.appendChild(createElement('dd', dateAfter))
+    dl.appendChild(createElement('dt', 'Hours (before)'))
+    dl.appendChild(createElement('dd', hoursBefore))
+    dl.appendChild(createElement('dt', 'Hours (after)'))
+    dl.appendChild(createElement('dd', hoursAfter))
     return dl
 }
 
